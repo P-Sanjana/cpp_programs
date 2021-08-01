@@ -1,0 +1,45 @@
+#include<iostream>
+using namespace std;
+int main(){
+	int i,j,k,b,a[10][10],n,s=0,max,count=0;
+	cin>>n;
+	for(i=0;i<n;i++){
+		for(j=0;j<n;j++){
+			cin>>a[i][j];
+		}
+	}
+	max=a[n-1][0];
+	for(i=0;i<n;i++){
+		if(max<a[n-1][i]){
+			max=a[n-1][i];
+			k=i;
+		}
+	}
+	s=s+max;
+	b=2;
+	while(1){
+		if(count<n-1){
+			if(k-1>0){
+			max=a[n-b][k-1];
+			for(j=k-1;j<=k+1;j++){
+				if(max<a[n-b][j]){
+					max=a[n-b][j];
+					k=j;
+				}
+			}}
+			else{
+			max=a[n-b][k];
+			for(j=k;j<=k+1;j++){
+				if(max<a[n-b][j]){
+					max=a[n-b][j];
+					k=j;
+				}
+			}}	
+			s=s+max;
+			count++;
+			b--;}
+	else
+		break;
+}
+cout<<s;
+}
